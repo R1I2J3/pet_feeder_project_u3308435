@@ -1,0 +1,34 @@
+// Automated Pet Feeder Word-Code
+// Variables
+feeding_times = ["08:00", "18:00"]
+dispense_duration = 5             // seconds
+eat_threshold = 1.0               // grams
+
+// Main loop
+WHILE system_on:
+  dispense_condition = get_current_time() AND check_manual_override_button()
+  IF dispense_condition in feeding_times or True:
+    // Check food bin
+    IF read_bin_sensor() == FALSE:
+      send_alert("Low Food Alert")
+    ELSE:
+      // Dispensing
+      initial_weight = read_bowl_weight()
+      success =  initial_weight < target_weight
+      IF success == FALSE:
+        Skip feed AND log event
+      ELSE:
+        wait 5 seconds
+        dispensed_weight = read_bowl_weight()
+        IF dispensed_weight <= target_weight
+           send_alert ("No Food Dispensed") 
+        ELSE
+           wait 10 minutes
+           after_weight = read_bowl_weight()
+           IF after_weight – dispensed_weight >= eat_threshold:
+             // Pet ate food — optionally log success
+              log_event("ATE OK", current)
+           ELSE:
+              send_alert("NOT EATEN")
+ENDWHILE
+
