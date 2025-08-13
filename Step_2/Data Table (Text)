@@ -1,0 +1,10 @@
+Type	Name	Description	Sample Values / Units	Operational Constraints
+Input	Real-Time Clock (RTC)	Provides current time and triggers scheduled feeding events	HH:MM (24-hour format)	±1 min accuracy; daily schedule stored in memory
+Input	Manual Override Button	User push-button to trigger an immediate feed cycle	Pressed / Not pressed (Boolean)	Debounce < 100 ms; ignore if motor running
+Input	Bin-Level Sensor	Detects if food remains in the storage bin	1 = Food present, 0 = Empty	Updates every 10 s; sensor stable in ±5% fill level
+Input	Bowl Weight Sensor	Measures current bowl weight to avoid overfilling	0–500 g (grams)	Accuracy ±2 g; Max bowl capacity 250 g
+Input	Motor Feedback Sensor	Confirms if motor rotated as commanded	Rotated / Not rotated (Boolean)	Detect within 1 s of command
+Output	Motor Driver Command	Activates the dispensing motor to release food	Rotate for X seconds at Y RPM	Max 5 s continuous run; stall detection enabled
+Output	Alert Module (Buzzer/LED)	Signals errors or low food conditions	On / Off, or Pattern (error codes)	Alerts must be < 2 min continuous to avoid annoyance
+Output	Network/SMS Alert	Sends notification to user device	Text string	Sent only on critical events (low food, jam, missed feed)
+Output	Event Log	Records feeding actions, errors, and sensor readings	Timestamped entries (CSV format)	Log stored in non-volatile memory; retains last 30 days
