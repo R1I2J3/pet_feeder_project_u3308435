@@ -1,0 +1,8 @@
+# Pet Feeder Project
+
+Unit: Introduction to Information Technology (8936)  
+Assignment: The Solving Problem Process (Assignment 1)  
+Author: Rahman Ishtiaque Joy (u3308435)  
+
+## Project Summary
+This project models a low-cost automated pet feeder for a local animal shelter. The feeder dispenses scheduled portions of dry food, verifies dispensing and consumption with sensors, logs events, and alerts staff on errors.
