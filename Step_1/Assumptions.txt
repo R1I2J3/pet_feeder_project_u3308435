@@ -1,0 +1,7 @@
+Assumptions:
+•	Only one type of dry kibble is used.
+•	Pets are fed exactly at 08:00 and 18:00 each day.
+•	The feeder has access to mains power and a basic network link for alerts.
+•	Bin-level sensors and bowl-weight sensors exist and are readable.
+•	Shelter staff empty/refill the hopper weekly.
+•	Time source: internal RTC or network-synced clock.
